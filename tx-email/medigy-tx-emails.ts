@@ -3,17 +3,30 @@ import stdEmailLayout from "./medigy-tx-emails-layout.html.ts";
 
 export const p = tmpl.xmlTag("p");
 
-export function emailMessage(heading: string): tmpl.TemplateLiteral {
+export interface HeadingSupplier {
+  readonly heading: string;
+}
+
+export interface SignatureSupplier {
+  readonly signature: string;
+}
+
+export function emailMessage(
+  supplier?: Partial<HeadingSupplier> & Partial<SignatureSupplier>,
+): tmpl.TemplateLiteral {
+  const defaultSignature = "Regards,<br> Medigy Team";
   return tmpl.governedTemplate(
     stdEmailLayout,
     tmpl.defaultGovernedTemplateOptions({
       bodyPlaceholderText: "<!-- BODY CONTENT GOES HERE -->",
       partials: [{
         placeholder: "<!-- HEADING PARTIAL CONTENT GOES HERE -->",
-        content: heading,
+        content: supplier ? (supplier.heading || "") : "",
       }, {
         placeholder: "<!-- SIGNATURE PARTIAL CONTENT GOES HERE -->",
-        content: "Regards,<br> Medigy Team",
+        content: supplier
+          ? (supplier.heading || defaultSignature)
+          : defaultSignature,
       }],
     }),
   );
@@ -54,11 +67,15 @@ export abstract class AbstractEmailTemplate implements EmailTemplate {
     layout?: tmpl.TemplateLiteral,
     fileName?: string,
   ) {
-    this.layout = layout || emailMessage(name);
+    this.layout = layout || emailMessage(this);
     this.fileName = fileName || `${name} Email Template.html`;
   }
 
   abstract get content(): string;
+
+  get heading(): string {
+    return this.name;
+  }
 
   async write(report?: (name: string) => void): Promise<void> {
     Deno.writeTextFileSync(this.fileName, this.content);
@@ -108,9 +125,22 @@ export class ResetPasswordEmail extends PasswordEmail {
   }
 }
 
+export class MedigyClaimInviteEmail extends PasswordEmail {
+  constructor(href = "{{url}}", layout?: tmpl.TemplateLiteral) {
+    super("Medigy Claim Invite", href, layout);
+  }
+
+  get content(): string {
+    return this.layout`
+      <p>Hi {{toName}},</p>
+      <p>{{user}} submitted a claim request for the {{product}} from Medigy. Please check and follow up the same.</p>`;
+  }
+}
+
 export const emailTemplates: EmailTemplate[] = [
   new CreatePasswordEmail(),
   new ResetPasswordEmail(),
+  new MedigyClaimInviteEmail(),
 ];
 
 if (import.meta.main) {
