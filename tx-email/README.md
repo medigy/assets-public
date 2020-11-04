@@ -1,24 +1,39 @@
 # Netspective Medigy Transactional (TX) E-mail Content
 
-The Medigy TX E-mail system uses the [github.com/shah/ts-safe-template](https://github.com/shah/ts-safe-template) library to define transactional e-mail content in TypeScript code and generate all the `*.html` files as validated, type-safe, content.
+The Medigy TX E-mail system uses the [github.com/gov-suite/governed-text-template](github.com/gov-suite/governed-text-template) library to define transactional e-mail content in TypeScript code and generate all the `*.html` files as validated, type-safe, content.
 
 # How to create an email template
 
-1. See if the standard layout in [medigy-tx-emails-layout.html.ts](medigy-tx-emails-layout.html.ts) matches your layout requirement. Assuming, it does, go to the next step.
-2. In [medigy-tx-emails.ts](medigy-tx-emails.ts) create a new class that implements the `EmailTemplate` interface. See `CreatePasswordEmail` and `ResetPasswordEmail` for examples. 
-3. Add your new class to the `emailTemplates` const declaration.
-4. Execute `deno-run medigy-tx-emails.ts`
+1. See if the standard layout in [medigy-tx-email-layout.tmpl.ts](medigy-tx-email-layout.tmpl.ts) matches your layout requirement. Assuming, it does, go to the next step.
+2. In [medigy-tx-authn-messages.ts](medigy-tx-authn-messages.ts) or [medigy-tx-claim-messages.ts](medigy-tx-claim-messages.ts) (or a new TypeScript file if you have a new type of message that doesn't fit into those categories) create a new function that accepts a single parameter with the template's placeholder variables. See `prepareCreatePasswordEmailMessage` and `prepareResetPasswordEmailMessage` in [medigy-tx-authn-messages.ts](medigy-tx-authn-messages.ts) for examples.
+3. In [medigy-tx-email-messages.tmpl.ts](medigy-tx-email-messages.tmpl.ts) "register" those functions in `templateIdentities` and `contentGuards` like the other methods.
+4. In [medigy-tx-email-messages.tmpl.ts](medigy-tx-email-messages.tmpl.ts) add your new function created in step 2 to body of the `executeTemplate` function.
+
+# How to generate an email message via HTTP Service
+
+Run:
+
+```bash
+deno-run https://denopkg.com/gov-suite/governed-text-template@v0.1.5/toctl.ts server --verbose --module=file://`pwd`/medigy-tx-email-messages.tmpl.ts,medigy-email
+```
 
 You should see the following output:
 
 ```bash
-❯ deno-run medigy-tx-emails.ts
-Check file:///home/snshah/workspaces/git.netspective.io/netspective-medigy/next.medigy.com/src/tx-email/medigy-tx-emails.ts
-Wrote Create Password Email Template.auto.html
-Wrote Reset Password Email Template.auto.html
+Template Orchestration service running at http://localhost:8163
+Pre-defined template modules:
+{ "medigy-email": "./medigy-tx-email-messages.tmpl.ts" }
 ```
 
-From the single `medigy-tx-emails.ts` all the different `*.auto.html` files will be generated using the layout defined at [medigy-tx-emails-layout.html.ts](medigy-tx-emails-layout.html.ts).
+Now you can open a browser and run:
+
+```
+http://localhost:8163/transform/medigy-email/create-password?authnURL=testURL
+http://localhost:8163/transform/medigy-email/reset-password?authnURL=testURL
+http://localhost:8163/transform/medigy-email/claim-invite?toFirstName=toFN&claimURL=claimUrl&claimantFirstName=Claimant&offeringName=Offering&offeringType=product
+```
+
+You'll see the full email in an HTML Preview - if you need to save the output, just use `cURL` or `wget`.
 
 # How to send email from Medigy Middleware
 
