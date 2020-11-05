@@ -16,16 +16,21 @@ Run:
 ```bash
 cd tx-email
 source <(curl -Ls https://raw.githubusercontent.com/gov-suite/governed-text-template/master/toctl-latest.env)
-toctl.ts server --verbose --module=file://`pwd`/medigy-tx-email-messages.tmpl.ts,medigy-email
+toctl server --verbose --module=file://`pwd`/medigy-tx-email-messages.tmpl.ts,medigy-email
 ```
 
 You should see the following output:
 
 ```bash
-Template Orchestration service running at http://localhost:8163
 Pre-defined template modules:
-{ "medigy-email": "./medigy-tx-email-messages.tmpl.ts" }
+{
+  "medigy-email": "file:///home/snshah/workspaces/github.com/medigy/assets-public/tx-email/medigy-tx-email-messages.tmp..."
+}
+Template Orchestration service running at http://localhost:8163
+medigy-email: file:///home/snshah/workspaces/github.com/medigy/assets-public/tx-email/medigy-tx-email-messages.tmpl.ts OK
 ```
+
+If you do not see "OK" after the template name, it means that there was a problem importing the template module and you should stop the server to correct the problem first. 
 
 Now you can open a browser and run:
 
