@@ -39,3 +39,26 @@ export function prepareResetPasswordEmailMessage(
     ${anchorTip(content.authnURL)}`,
   });
 }
+
+export function prepareResetPasswordSuccessEmailMessage(
+  content: AuthnMessageContent,
+): string {
+  return layout({
+    heading: "Reset Password Successful",
+    body: `${p`Hi`}
+    ${p`Your password has been updated successfully.`}`,
+  });
+}
+
+export function prepareUserSignUpEmailMessage(
+  content: AuthnMessageContent,
+): string {
+  return layout({
+    heading: "Welcome to Medigy",
+    body: `${p`Hi`}
+    ${p
+      `You have successfully <b>created an account</b> in Medigy. Click below to create your login password.`}
+    ${callToActionButton("Create Password", content.authnURL)}
+    ${anchorTip(content.authnURL)}`,
+  });
+}

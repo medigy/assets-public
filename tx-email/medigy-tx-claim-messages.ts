@@ -14,7 +14,7 @@ export interface ClaimContent {
 
 export const [
   isValidPersonalizedClaimContent,
-  onInalidPersonalizedClaimContent,
+  onInvalidPersonalizedClaimContent,
 ] = gtt
   .contentGuard<ClaimContent & PersonalizedContent>(
     "toFirstName",
@@ -32,5 +32,29 @@ export function prepareClaimInviteEmailMessage(
     body: `${p`Hi ${content.toFirstName}`}
     <p>${content.claimantFirstName} submitted a claim request for the ${content.offeringName} ${content.offeringType}. 
     If you can manage this ${content.offeringType}, please <a href="${content.claimURL}">tap here</a> to confirm.</p>`,
+  });
+}
+
+export function prepareClaimRequestConfirmationEmailMessage(
+  content: ClaimContent & PersonalizedContent,
+): string {
+  return layout({
+    heading: "Request Medigy Claim",
+    body: `${p`Hi ${content.toFirstName}`}
+    <p>  Your request on ${content.offeringName} has been submitted successfully. Our curation team will check and get back to you on this.</p>`,
+  });
+}
+
+export function prepareClaimSuccessThankYouEmailMessage(
+  content: ClaimContent & PersonalizedContent,
+): string {
+  return layout({
+    heading: "Medigy Claim Successful",
+    body: `${p`Hi ${content.toFirstName}`}
+    <p>
+    Thanks for claiming your ${content.offeringType} ${content.offeringName} !
+    </p>
+    <p>  We’ll let you know once it is published on Medigy. If you do not receive a response from us within 3 working days, please write to us at reply@mail.medigy.com.
+    </p>`,
   });
 }

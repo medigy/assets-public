@@ -38,6 +38,12 @@ Now you can open a browser and run:
 http://localhost:8163/transform/medigy-email/create-password?authnURL=testURL
 http://localhost:8163/transform/medigy-email/reset-password?authnURL=testURL
 http://localhost:8163/transform/medigy-email/claim-invite?toFirstName=toFN&claimURL=claimUrl&claimantFirstName=Claimant&offeringName=Offering&offeringType=product
+http://localhost:8163/transform/medigy-email/institution-invite?institutionName=Test123&userDisplayName=asdfsdas&toFirstName=fdsf&instiURL=http://google.com&fromFirstName=Alan
+http://localhost:8163/transform/medigy-email/claim-success-thankyou?toFirstName=toFN&claimURL=claimUrl&claimantFirstName&offeringName=Offering&offeringType
+http://localhost:8163/transform/medigy-email/invite-evaluation-facet?toFirstName=Alan&fromFirstName=Francis&invitePropertyName=Medigy%20Interoperability&offeringName=Cardiac%20Risk&inviteURL=https://medigy.com/invite
+http://localhost:8163/transform/medigy-email/post-claim-feedback-alert?toFirstName=Alan&feedbackContent=Test%20content&fromFirstName
+http://localhost:8163/transform/medigy-email/suggestion-thank-you?toFirstName=Alan&suggestContent=Test%20content&fromFirstName=Francis&suggestType=News
+http://localhost:8163/transform/medigy-email/create-offering?toFirstName=Alan&offeringName=Cardiac%20Risk&offeringType=product&submissionId=5489&offeringOwnerEmail=alan.francis@citrusinformatics.com&offeringDetails=Test%20Details&createdDate=02%20Nov%202020&currentDate=05%20Nov%202020
 ```
 
 You'll see the full email in an HTML Preview - if you need to save the output, just use `cURL` or `wget`.
