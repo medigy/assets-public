@@ -14,7 +14,9 @@ The Medigy TX E-mail system uses the [github.com/gov-suite/governed-text-templat
 Run:
 
 ```bash
-deno-run https://denopkg.com/gov-suite/governed-text-template@v0.1.5/toctl.ts server --verbose --module=file://`pwd`/medigy-tx-email-messages.tmpl.ts,medigy-email
+cd tx-email
+source <(curl -Ls https://raw.githubusercontent.com/gov-suite/governed-text-template/master/toctl-latest.env)
+toctl.ts server --verbose --module=file://`pwd`/medigy-tx-email-messages.tmpl.ts,medigy-email
 ```
 
 You should see the following output:
