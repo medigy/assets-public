@@ -42,6 +42,13 @@ http://localhost:8163/transform/medigy-email/claim-invite?toFirstName=toFN&claim
 
 You'll see the full email in an HTML Preview - if you need to save the output, just use `cURL` or `wget`.
 
+# How to build the Docker container to run the tx-email service outside of local development (production)
+
+```bash
+docker build . -t medigy_tx_mail
+docker run medigy_tx_mail
+```
+
 # How to send email from Medigy Middleware
 
 This is sample code for how we send a email from GraphQL Middleware now. This one need to be removed once we are ready with new email template server we can remove this from code 
