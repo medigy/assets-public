@@ -38,12 +38,29 @@ Now you can open a browser and run:
 http://localhost:8163/transform/medigy-email/create-password?authnURL=testURL
 http://localhost:8163/transform/medigy-email/reset-password?authnURL=testURL
 http://localhost:8163/transform/medigy-email/claim-invite?toFirstName=toFN&claimURL=claimUrl&claimantFirstName=Claimant&offeringName=Offering&offeringType=product
-http://localhost:8163/transform/medigy-email/institution-invite?institutionName=Test123&userDisplayName=asdfsdas&toFirstName=fdsf&instiURL=http://google.com&fromFirstName=Alan
-http://localhost:8163/transform/medigy-email/claim-success-thankyou?toFirstName=toFN&claimURL=claimUrl&claimantFirstName&offeringName=Offering&offeringType
-http://localhost:8163/transform/medigy-email/invite-evaluation-facet?toFirstName=Alan&fromFirstName=Francis&invitePropertyName=Medigy%20Interoperability&offeringName=Cardiac%20Risk&inviteURL=https://medigy.com/invite
-http://localhost:8163/transform/medigy-email/post-claim-feedback-alert?toFirstName=Alan&feedbackContent=Test%20content&fromFirstName
-http://localhost:8163/transform/medigy-email/suggestion-thank-you?toFirstName=Alan&suggestContent=Test%20content&fromFirstName=Francis&suggestType=News
-http://localhost:8163/transform/medigy-email/create-offering?toFirstName=Alan&offeringName=Cardiac%20Risk&offeringType=product&submissionId=5489&offeringOwnerEmail=alan.francis@citrusinformatics.com&offeringDetails=Test%20Details&createdDate=02%20Nov%202020&currentDate=05%20Nov%202020
+http://localhost:8163/transform/medigy-email/claim-request-confirmation?toFirstName=toFN&offeringName=MyOffering
+http://localhost:8163/transform/medigy-email/claim-success-thankyou?toFirstName=toFN&offeringName=Offering&offeringType=product
+http://localhost:8163/transform/medigy-email/post-claim-feedback-alert?toFirstName=MyFN&feedbackContent=Test%20content
+http://localhost:8163/transform/medigy-email/post-claim-feedback-thank-you?toFirstName=MyFN&feedbackContent=Test%20content
+http://localhost:8163/transform/medigy-email/general-feedback-thank-you?toFirstName=MyFN
+http://localhost:8163/transform/medigy-email/general-feedback-alert?toFirstName=MyFN&fromFirstName=FromFN
+http://localhost:8163/transform/medigy-email/create-institution?institutionName=My%20Test%20Institution&toFirstName=MyFN
+http://localhost:8163/transform/medigy-email/claim-institution?institutionName=My%20Test%20Institution&toFirstName=MyFN&userDisplayName=UserDN
+http://localhost:8163/transform/medigy-email/claim-institution-request-confirm?institutionName=My%20Test%20Institution&toFirstName=MyFN
+http://localhost:8163/transform/medigy-email/institution-invite?institutionName=TestInsti&userDisplayName=UserDN&toFirstName=ToFN&instiURL=http://medigy.com/
+http://localhost:8163/transform/medigy-email/invite-topic?toFirstName=MyFN&fromFirstName=FromUN&invitePropertyName=Cardiac%20Health%20Care&inviteURL=https://medigy.com/invite
+http://localhost:8163/transform/medigy-email/invite-project?toFirstName=MyFN&fromFirstName=FromUN&invitePropertyName=Cardiac%20Health%20Care&inviteURL=https://medigy.com/invite
+http://localhost:8163/transform/medigy-email/approve-offering?toFirstName=MyFN&offeringName=Cardiac%20Risk&offeringType=product&createdDate=02%20Nov%202020&currentDate=05%20Nov%202020
+http://localhost:8163/transform/medigy-email/create-offering?toFirstName=MyFN&offeringName=Cardiac%20Risk&offeringType=product&submissionId=5489&offeringOwnerEmail=myuseremail@emaildomain.com&offeringDetails=Test%20Details
+http://localhost:8163/transform/medigy-email/suggestion-thank-you?toFirstName=MyFN&suggestContent=Test%20content&suggestType=News
+http://localhost:8163/transform/medigy-email/invite-evaluation-facet?toFirstName=MyFN&fromFirstName=MyFromFN&invitePropertyName=Medigy%20Interoperability&offeringName=Cardiac%20Risk&inviteURL=https://medigy.com/invite
+http://localhost:8163/transform/medigy-email/reset-password-success
+http://localhost:8163/transform/medigy-email/user-signup?authnURL=testURL
+http://localhost:8163/transform/medigy-email/suggestion-alert?toFirstName=Alan&suggestContent=Test%20content&suggestType=News
+http://localhost:8163/transform/medigy-email/create-ilm?toFirstName=MyFN&ilmName=My%20ILM
+http://localhost:8163/transform/medigy-email/update-offering?toFirstName=Alan&offeringName=Cardiac%20Risk&offeringType=product&submissionId=5489&offeringOwnerEmail=alan.francis@citrusinformatics.com&offeringDetails=Test%20Details
+
+
 ```
 
 You'll see the full email in an HTML Preview - if you need to save the output, just use `cURL` or `wget`.

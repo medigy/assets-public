@@ -15,6 +15,12 @@ export const [isValidAuthnMessageContent, onInvalidAuthnMessageContent] = gtt
     "authnURL",
   );
 
+export const [
+  isValidAuthnMessageResetPassContent,
+  onInvalidAuthnMessageResetPassContent,
+] = gtt
+  .contentGuard<AuthnMessageContent>();
+
 export function prepareCreatePasswordEmailMessage(
   content: AuthnMessageContent,
 ): string {

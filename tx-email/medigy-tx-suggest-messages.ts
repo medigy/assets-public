@@ -7,7 +7,6 @@ import {
 
 export interface SuggestContent {
   readonly suggestContent: string;
-  readonly fromFirstName: string;
   readonly suggestType: string;
 }
 
@@ -18,7 +17,6 @@ export const [
   .contentGuard<SuggestContent & PersonalizedContent>(
     "toFirstName",
     "suggestContent",
-    "fromFirstName",
     "suggestType",
   );
 

@@ -20,6 +20,32 @@ export const [
     "fromFirstName",
   );
 
+export const [
+  isValidPersonalizedGeneralFeedbackContent,
+  onInvalidPersonalizedGeneralFeedbackContent,
+] = gtt
+  .contentGuard<FeedbackContent & PersonalizedContent>(
+    "toFirstName",
+  );
+
+export const [
+  isValidPersonalizedGeneralFeedbackAlertContent,
+  onInvalidPersonalizedGeneralFeedbackAlertContent,
+] = gtt
+  .contentGuard<FeedbackContent & PersonalizedContent>(
+    "toFirstName",
+    "fromFirstName",
+  );
+
+export const [
+  isValidPersonalizedClaimFeedbackContent,
+  onInvalidPersonalizedClaimFeedbackContent,
+] = gtt
+  .contentGuard<FeedbackContent & PersonalizedContent>(
+    "toFirstName",
+    "feedbackContent",
+  );
+
 export function preparePostClaimFeedbackAlertEmailMessage(
   content: FeedbackContent & PersonalizedContent,
 ): string {

@@ -55,32 +55,32 @@ export const contentGuards: Record<TemplateIdentity, [
     claim.onInvalidPersonalizedClaimContent,
   ],
   "reset-password-success": [
-    authn.isValidAuthnMessageContent,
-    authn.onInvalidAuthnMessageContent,
+    authn.isValidAuthnMessageResetPassContent,
+    authn.onInvalidAuthnMessageResetPassContent,
   ],
   "user-signup": [
     authn.isValidAuthnMessageContent,
     authn.onInvalidAuthnMessageContent,
   ],
   "claim-request-confirmation": [
-    claim.isValidPersonalizedClaimContent,
-    claim.onInvalidPersonalizedClaimContent,
+    claim.isValidPersonalizedClaimRequestContent,
+    claim.onInvalidPersonalizedClaimRequestContent,
   ],
   "claim-success-thankyou": [
-    claim.isValidPersonalizedClaimContent,
-    claim.onInvalidPersonalizedClaimContent,
+    claim.isValidPersonalizedClaimSuccessContent,
+    claim.onInvalidPersonalizedClaimSuccessContent,
   ],
   "create-institution": [
-    insti.isValidPersonalizedInstiContent,
-    insti.onInvalidPersonalizedInstiContent,
+    insti.isValidPersonalizedCreateInstiContent,
+    insti.onInvalidPersonalizedCreateInstiContent,
   ],
   "claim-institution": [
-    insti.isValidPersonalizedInstiContent,
-    insti.onInvalidPersonalizedInstiContent,
+    insti.isValidPersonalizedClaimInstiInviteContent,
+    insti.onInvalidPersonalizedClaimInstiInviteContent,
   ],
   "claim-institution-request-confirm": [
-    insti.isValidPersonalizedInstiContent,
-    insti.onInvalidPersonalizedInstiContent,
+    insti.isValidPersonalizedCreateInstiContent,
+    insti.onInvalidPersonalizedCreateInstiContent,
   ],
   "institution-invite": [
     insti.isValidPersonalizedInstiContent,
@@ -91,28 +91,28 @@ export const contentGuards: Record<TemplateIdentity, [
     invite.onInvalidPersonalizedInviteContent,
   ],
   "invite-topic": [
-    invite.isValidPersonalizedInviteContent,
-    invite.onInvalidPersonalizedInviteContent,
+    invite.isValidPersonalizedInviteTopicProjectContent,
+    invite.onInvalidPersonalizedInviteTopicProjectContent,
   ],
   "invite-project": [
-    invite.isValidPersonalizedInviteContent,
-    invite.onInvalidPersonalizedInviteContent,
+    invite.isValidPersonalizedInviteTopicProjectContent,
+    invite.onInvalidPersonalizedInviteTopicProjectContent,
   ],
   "post-claim-feedback-alert": [
-    feedback.isValidPersonalizedFeedbackContent,
-    feedback.onInvalidPersonalizedFeedbackContent,
+    feedback.isValidPersonalizedClaimFeedbackContent,
+    feedback.onInvalidPersonalizedClaimFeedbackContent,
   ],
   "post-claim-feedback-thank-you": [
-    feedback.isValidPersonalizedFeedbackContent,
-    feedback.onInvalidPersonalizedFeedbackContent,
+    feedback.isValidPersonalizedClaimFeedbackContent,
+    feedback.onInvalidPersonalizedClaimFeedbackContent,
   ],
   "general-feedback-thank-you": [
-    feedback.isValidPersonalizedFeedbackContent,
-    feedback.onInvalidPersonalizedFeedbackContent,
+    feedback.isValidPersonalizedGeneralFeedbackContent,
+    feedback.onInvalidPersonalizedGeneralFeedbackContent,
   ],
   "general-feedback-alert": [
-    feedback.isValidPersonalizedFeedbackContent,
-    feedback.onInvalidPersonalizedFeedbackContent,
+    feedback.isValidPersonalizedGeneralFeedbackAlertContent,
+    feedback.onInvalidPersonalizedGeneralFeedbackAlertContent,
   ],
   "suggestion-alert": [
     suggest.isValidPersonalizedSuggestContent,
@@ -135,8 +135,8 @@ export const contentGuards: Record<TemplateIdentity, [
     offering.onInvalidPersonalizedOfferingContent,
   ],
   "approve-offering": [
-    offering.isValidPersonalizedOfferingContent,
-    offering.onInvalidPersonalizedOfferingContent,
+    offering.isValidPersonalizedOfferingApprovalContent,
+    offering.onInvalidPersonalizedOfferingApprovalContent,
   ],
 };
 

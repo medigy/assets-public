@@ -26,6 +26,17 @@ export const [
     "offeringName",
   );
 
+export const [
+  isValidPersonalizedInviteTopicProjectContent,
+  onInvalidPersonalizedInviteTopicProjectContent,
+] = gtt
+  .contentGuard<InviteContent & PersonalizedContent>(
+    "toFirstName",
+    "fromFirstName",
+    "inviteURL",
+    "invitePropertyName",
+  );
+
 export function prepareEvaluationFacetInviteEmailMessage(
   content: InviteContent & PersonalizedContent,
 ): string {

@@ -10,7 +10,6 @@ import {
 export interface InstiContent {
   readonly userDisplayName: string;
   readonly institutionName: string;
-  readonly fromFirstName: string;
   readonly instiURL: string;
 }
 
@@ -22,8 +21,26 @@ export const [
     "toFirstName",
     "userDisplayName",
     "institutionName",
-    "fromFirstName",
     "instiURL",
+  );
+
+export const [
+  isValidPersonalizedCreateInstiContent,
+  onInvalidPersonalizedCreateInstiContent,
+] = gtt
+  .contentGuard<InstiContent & PersonalizedContent>(
+    "toFirstName",
+    "institutionName",
+  );
+
+export const [
+  isValidPersonalizedClaimInstiInviteContent,
+  onInvalidPersonalizedClaimInstiInviteContent,
+] = gtt
+  .contentGuard<InstiContent & PersonalizedContent>(
+    "toFirstName",
+    "institutionName",
+    "userDisplayName",
   );
 
 export function prepareCreateInstitutionEmailMessage(
@@ -67,7 +84,7 @@ export function prepareInstitutionInviteEmailMessage(
     heading: "Institution Claim Request Submitted",
     body: `${p`Hi ${content.toFirstName}`}
     ${p
-      `<p> ${content.fromFirstName} has invited you to the institution <b>${content.institutionName}</b> in Medigy. Please click the below button to register into Medigy and check out the project. <br/> If you are already a Medigy user please log in and continue.
+      `<p> ${content.userDisplayName} has invited you to the institution <b>${content.institutionName}</b> in Medigy. Please click the below button to register into Medigy and check out the project. <br/> If you are already a Medigy user please log in and continue.
     </p>
     </p>
     <p>

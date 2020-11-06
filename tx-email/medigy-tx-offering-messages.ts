@@ -23,11 +23,21 @@ export const [
     "toFirstName",
     "offeringType",
     "offeringName",
-    "createdDate",
-    "currentDate",
     "submissionId",
     "offeringDetails",
     "offeringOwnerEmail",
+  );
+
+export const [
+  isValidPersonalizedOfferingApprovalContent,
+  onInvalidPersonalizedOfferingApprovalContent,
+] = gtt
+  .contentGuard<OfferingContent & PersonalizedContent>(
+    "toFirstName",
+    "offeringType",
+    "offeringName",
+    "createdDate",
+    "currentDate",
   );
 
 export function prepareOfferingApproveEmailMessage(

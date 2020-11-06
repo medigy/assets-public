@@ -7,7 +7,6 @@ import {
 
 export interface IlmContent {
   readonly ilmName: string;
-  readonly fromFirstName: string;
 }
 
 export const [
@@ -17,7 +16,6 @@ export const [
   .contentGuard<IlmContent & PersonalizedContent>(
     "toFirstName",
     "ilmName",
-    "fromFirstName",
   );
 
 export function prepareCreateIlmSuccessEmailMessage(

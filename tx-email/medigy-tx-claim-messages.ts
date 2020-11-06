@@ -24,6 +24,25 @@ export const [
     "offeringType",
   );
 
+export const [
+  isValidPersonalizedClaimRequestContent,
+  onInvalidPersonalizedClaimRequestContent,
+] = gtt
+  .contentGuard<ClaimContent & PersonalizedContent>(
+    "toFirstName",
+    "offeringName",
+  );
+
+export const [
+  isValidPersonalizedClaimSuccessContent,
+  onInvalidPersonalizedClaimSuccessContent,
+] = gtt
+  .contentGuard<ClaimContent & PersonalizedContent>(
+    "toFirstName",
+    "offeringName",
+    "offeringType",
+  );
+
 export function prepareClaimInviteEmailMessage(
   content: ClaimContent & PersonalizedContent,
 ): string {
